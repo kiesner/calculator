@@ -1,9 +1,14 @@
 on:
   push:
   workflow_dispatch:
-
+    inputs:
+      RUN_TESTS:
+        description: Run tests
+        type: boolean
+        default: false
+        required: false
 env:
-  RUN_TESTS: 'true'
+  RUN_TESTS: ${{ github.event.inputs.RUN_TESTS || vars.RUN_TESTS || 'true' }}
 
 jobs:
   ci:
