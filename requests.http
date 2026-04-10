@@ -1,0 +1,17 @@
+GET http://localhost:8080/resources/calculation/sum/1/2
+
+###
+
+GET http://localhost:8080/resources/calculation/sum
+
+###
+
+GET http://localhost:8080/actuator/health
+
+###
+
+GET http://localhost:8080/actuator/health/liveness
+
+###
+
+GET http://localhost:8080/actuator/health/readiness

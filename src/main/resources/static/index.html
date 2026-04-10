@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script>
+			"use strict";
+
+			let inputNumber1Element;
+			let inputNumber2Element;
+			let inputResultElement;
+
+			function init() {
+				inputNumber1Element = document.getElementById("number1");
+				inputNumber2Element = document.getElementById("number2");
+				inputResultElement = document.getElementById("result");
+
+				const buttonElement = document.getElementsByTagName("button")[0];
+				buttonElement.addEventListener("click", calculateSum);
+			}
+
+			function calculateSum() {
+				const number1 = parseInt(inputNumber1Element.value);
+				const number2 = parseInt(inputNumber2Element.value);
+
+				if (!isNaN(number1) && !isNaN(number2)) {
+					fetch(`/resources/calculation/sum/${number1}/${number2}`)
+						.then(response => response.json())
+						.then(calculation => inputResultElement.value = calculation.result)
+						.catch(error => alert(`Fehler aufgetreten: ${error.message}`));
+				}
+			}
+
+			document.addEventListener("DOMContentLoaded", init);
+		</script>
+	</head>
+
+	<body>
+		<h1>Calculator</h1>
+
+		<p>
+			<input id="number1" type="number" placeholder="1. Zahl"> +
+			<input id="number2" type="number" placeholder="2. Zahl"> =
+			<input id="result" type="number" disabled>
+		</p>
+
+		<button>Summe berechnen</button>
+	</body>
+</html>

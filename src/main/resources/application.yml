@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:derby:memory:db_calculation;create=true
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+
+  threads:
+    virtual:
+      enabled: true
