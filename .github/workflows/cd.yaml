@@ -64,5 +64,5 @@ jobs:
            namespace: 'default'
            annotate-resources: false
            manifests: |
-              ./calculator-cd.yaml
+              calculator-cd.yaml
         
