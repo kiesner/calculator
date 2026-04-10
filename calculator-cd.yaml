@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: calculator-ci
+  labels:
+    app: calculator-ci
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: calculator-ci
+  template:
+    metadata:
+      name: calculator-ci
+      labels:
+        app: calculator-ci
+    spec:
+      containers:
+        - name: calculator-ci
+          image: ghcr.io/kiesner/calculator
+          imagePullPolicy: Always
+          ports:
+            - name: calculator
+              containerPort: 8080
+              protocol: TCP
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: calculator-ci
+  labels:
+    app: calculator-ci
+spec:
+  selector:
+    app: calculator-ci
+  ports:
+    - name: calculator-ci
+      port: 8080
+      targetPort: calculator
+      nodePort: 30000
+  type: NodePort
