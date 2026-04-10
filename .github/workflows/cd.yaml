@@ -54,11 +54,11 @@ jobs:
           echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u lion78at --password-stdin
           docker push lion78at/calculator
 
-      - uses: azure/k8s-set-context@v5
-        with:
-           method: kubeconfig
-           kubeconfig: /home/kurs/.kube/config
-           context: kubernetes-admin@kubernetes
+      #- uses: azure/k8s-set-context@v5
+      #  with:
+      #     method: kubeconfig
+      #     kubeconfig: /home/kurs/.kube/config
+      #     context: kubernetes-admin@kubernetes
 
       - uses: Azure/k8s-deploy@v5
         with:
