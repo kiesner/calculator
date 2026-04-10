@@ -20,7 +20,8 @@ spec:
           image: lion78at/calculator
           imagePullPolicy: Always
           ports:
-            - containerPort: 8080
+            - name: calculator
+              containerPort: 8080
               protocol: TCP
       restartPolicy: Always
 ---
@@ -36,6 +37,6 @@ spec:
   ports:
     - name: calculator-ci
       port: 8080
-      targetPort: 8080
+      targetPort: calculator
       nodePort: 30000
   type: NodePort
