@@ -33,4 +33,9 @@ jobs:
 
       - name: Build docker image
         run: docker build -t lion78at/calculator --no-cache .
+
+      - name: Push docker image
+        run: |
+          echo "dckr_pat_l_gkfMe8gjOgcWxl9H6J_TKLoI8" | docker login -u lion78at --password-stdin
+          docker push lion78at/calculator
         
