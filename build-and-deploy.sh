@@ -11,8 +11,9 @@ docker build \
 	--no-cache \
 	.
 
-docker login \
-	-u lion78at
+echo "dckr_pat_l_gkfMe8gjOgcWxl9H6J_TKLoI8" | docker login \
+	-u lion78at \
+	--password-stdin
 
 docker push \
 	lion78at/calculator

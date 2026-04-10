@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: calculator-ci
+  labels:
+    app: calculator-ci
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: calculator-ci
+  template:
+    metadata:
+      name: calculator-ci
+      labels:
+        app: calculator-ci
+    spec:
+      containers:
+        - name: calculator-ci
+          image: lion78at/calculator
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: calculator-ci
+  labels:
+    app: calculator-ci
+spec:
+  selector:
+    app: calculator-ci
+  ports:
+    - name: calculator-ci
+      port: 8080
+      targetPort: 8080
+  type: NodePort
