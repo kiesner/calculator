@@ -25,15 +25,12 @@ jobs:
           java -version
           mvn -v
           docker version
-      - name: build
-        run: echo 'step build'
+      - name: Build maven package
+        run: mvn package -DskipTests
 
-      - name: test
-        run: echo 'step test'
+      - name: Run maven tests
+        run: mvn test -P run-integration-tests
 
-      - name: release
-        run: echo 'step release'
-
-      - name: deploy
-        run: echo 'step deploy'
+      - name: Build docker image
+        run: docker build -t lion78at/calculator --no-cache
         
