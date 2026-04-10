@@ -14,6 +14,7 @@ jobs:
   cd:
     runs-on: self-hosted
     steps:
+      - uses: actions/checkout@v6
       - name: init
         run: |
           echo 'step init'
