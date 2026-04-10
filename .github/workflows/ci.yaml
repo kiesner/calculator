@@ -1,0 +1,30 @@
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: init
+        run: |
+          echo 'step init'
+          pwd && ls
+          env
+          echo ${{ secrets.DOCKERHUB_TOKEN }}
+          echo ${{ env.RUN_TESTS }}
+          java -version
+          mvn -v
+          docker version
+      - name: build
+        run: echo 'step build'
+
+      - name: test
+        run: echo 'step test'
+
+      - name: release
+        run: echo 'step release'
+
+      - name: deploy
+        run: echo 'step deploy'
+        
