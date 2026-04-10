@@ -47,12 +47,12 @@ jobs:
           path: target/site/jacoco/
 
       - name: Build docker image
-        run: docker build -t lion78at/calculator --no-cache .
+        run: docker build -t ghcr.io/${{ github.repository }} --no-cache .
 
       - name: Push docker image
         run: |
-          echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u lion78at --password-stdin
-          docker push lion78at/calculator
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+          docker push ghcr.io/${{ github.repository }}
 
       - uses: azure/k8s-set-context@v5
         with:
