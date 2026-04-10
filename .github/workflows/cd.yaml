@@ -63,6 +63,7 @@ jobs:
       - uses: Azure/k8s-deploy@v5
         with:
            namespace: 'default'
+           annotate-resources: false
            manifests: |
               ./calculator-ci.yaml
         
