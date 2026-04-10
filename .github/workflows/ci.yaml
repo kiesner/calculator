@@ -32,5 +32,5 @@ jobs:
         run: mvn test -P run-integration-tests
 
       - name: Build docker image
-        run: docker build -t lion78at/calculator --no-cache
+        run: docker build -t lion78at/calculator --no-cache .
         
